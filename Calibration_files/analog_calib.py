@@ -9,7 +9,7 @@ from adafruit_ads1x15.analog_in import AnalogIn
 i2c = busio.I2C(board.SCL, board.SDA)
 digital_converter = ADS.ADS1015(i2c)
 
-print(type(digital_converter))
+#print(type(digital_converter))
 #this class will work if the platform/raspberry pi 3 is using an Adafruit ads1x15 analog - digital converter
 class analogue_ada_sensor(object):
     channel = None
