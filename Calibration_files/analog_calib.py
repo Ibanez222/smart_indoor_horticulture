@@ -30,7 +30,7 @@ class analogue_ada_sensor(object):
         return self.channel.value
     
 ##calibrating the sensor
-##recommended that there is an open air and wet controll value
+##recommended that there is an open air and wet control value
 def get_mean_control_value(sensor, Time): #argument must be the analogue_ada_sensor type and the seconds
     control_values = []
     
