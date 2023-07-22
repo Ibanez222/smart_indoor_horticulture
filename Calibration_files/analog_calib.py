@@ -13,7 +13,8 @@ digital_converter = ADS.ADS1015(i2c)
 #this class will work if the platform/raspberry pi 3 is using an Adafruit ads1x15 analog - digital converter
 class analogue_ada_sensor(object):
     channel = None
-    def __init__(self, signal_converter, pin):
+    def __init__(self, type_of_data, signal_converter, pin):
+        self.type_of_data = type_of_data
         self.signal_converter = signal_converter
         self.channel = AnalogIn(signal_converter, pin) #The channel value will be ADS.PX (P0-P3)
     
@@ -24,14 +25,15 @@ class analogue_ada_sensor(object):
         return self.channel
     
     def get_voltage(self):
-        return self.channel.voltage
+        return self.channel.voltage ##justrawvalue
     
     def get_raw_value(self):
-        return self.channel.value
+        return self.channel.value ## justrawvalue
     
-##calibrating the sensor
-##recommended that there is an open air and wet control value
-def get_mean_control_value(sensor, Time): #argument must be the analogue_ada_sensor type and the seconds
+## calibrating the sensor get the sun value
+## recommended that there is an open air and wet control value for moisture sensor
+##
+def get_control_value(sensor, Time): #argument must be the analogue_ada_sensor type and the seconds
     control_values = []
     
     for i in range(Time):
