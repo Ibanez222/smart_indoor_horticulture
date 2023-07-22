@@ -6,9 +6,17 @@ from datetime import datetime
 
 
 class DHT(object):
+	models = [Adafruit_DHT.DHT11, Adafruit_DHT.DHT22]
+	
 	def __init__(self, pin, model):
 		self.pin = pin
-		self.model = model
+		
+		if model == "DHT11" or "dht11":
+			self.model = self.models[0]
+		elif model == "DHT22" or "dht22":
+			self.model = self.models[1]
+		else:
+			print("Please type in a right DHT sensor model!")
 
 	def get_pin(self):
 		return self.pin
@@ -21,7 +29,7 @@ class DHT(object):
 
 
 
-
+sensor = DHT(4, "DHT22")
 '''
 sensor = DHT(4, Adafruit_DHT.DHT22)	
 
