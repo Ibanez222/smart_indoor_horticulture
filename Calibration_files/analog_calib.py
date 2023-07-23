@@ -44,12 +44,15 @@ class analogue_ada_sensor(object):
 def get_control_value(sensor, Time): #argument must be the analogue_ada_sensor type and the seconds
     control_values = []
     
-    for i in range(Time):
+    count = 0
+    while count < Time:
         sensor_value = sensor.get_raw_value()
         control_values.append(sensor_value)
         print(f"raw data value: {sensor_value}")
+        count+=1
         time.sleep(1) #get reading per second
-       
+
+        
     return max(control_values)
 
 ##based on arduino map() function
