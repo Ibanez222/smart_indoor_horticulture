@@ -4,31 +4,39 @@ import busio
 import adafruit_ads1x15.ads1015 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
 
-#This is assuming the user has enabled the i2c bus in the raspberry pi 3's configuration
-#Create the I2C bus
-i2c = busio.I2C(board.SCL, board.SDA)
-digital_converter = ADS.ADS1015(i2c)
-
-#print(type(digital_converter))
-#this class will work if the platform/raspberry pi 3 is using an Adafruit ads1x15 analog - digital converter
 class analogue_ada_sensor(object):
-    channel = None
-    def __init__(self, type_of_data, signal_converter, pin):
+    #Adafruit pins
+    pins = {
+        0: ADS.P0,
+        1: ADS.P1,
+        2: ADS.P2,
+        3: ADS.P3
+    }
+
+    def __init__(self, type_of_data, pin):
         self.type_of_data = type_of_data
-        self.signal_converter = signal_converter
-        self.channel = AnalogIn(signal_converter, pin) #The channel value will be ADS.PX (P0-P3)
-    
+        self.i2c = busio.I2C(board.SCL, board.SDA)
+        self.digital_converter = ADS.ADS1015(self.i2c)
+
+        if pin not in [0, 1, 2, 3]:
+            raise ValueError("Invalid pin. Please input a valid pin number (0, 1, 2, or 3).")
+        self.channel = AnalogIn(self.digital_converter, self.pins[str(pin)])  # The channel value will be ADS.PX (P0-P3)
+
     def get_signal_converter(self):
-        return self.signal_coverter
-    
+        return self.signal_converter
+
     def get_channel(self):
         return self.channel
-    
+
     def get_voltage(self):
-        return self.channel.voltage ##justrawvalue
-    
+        return self.channel.voltage  # Returns the voltage value
+
     def get_raw_value(self):
-        return self.channel.value ## justrawvalue
+        return self.channel.value  # Returns the raw ADC value
+
+    def __str__(self):
+        return f"Analog Sensor (Type: {self.type_of_data}, Pin: {self.channel.name}, Voltage: {self.get_voltage():.2f}V)"
+
     
 ## calibrating the sensor get the sun value
 ## recommended that there is an open air and wet control value for moisture sensor
@@ -41,13 +49,8 @@ def get_control_value(sensor, Time): #argument must be the analogue_ada_sensor t
         control_values.append(sensor_value)
         print(f"raw data value: {sensor_value}")
         time.sleep(1) #get reading per second
-    
-    total = 0
-    
-    for reading in control_values:
-        total += reading
        
-    return total/len(control_values)
+    return max(control_values)
 
 ##based on arduino map() function
 def mapValue(sensor_value, min_value, max_value, mappedLow, mappedHigh):
