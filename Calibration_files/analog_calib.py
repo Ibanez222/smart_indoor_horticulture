@@ -20,7 +20,7 @@ class analogue_ada_sensor(object):
 
         if pin not in [0, 1, 2, 3]:
             raise ValueError("Invalid pin. Please input a valid pin number (0, 1, 2, or 3).")
-        self.channel = AnalogIn(self.digital_converter, self.pins[str(pin)])  # The channel value will be ADS.PX (P0-P3)
+        self.channel = AnalogIn(self.digital_converter, self.pins[pin])  # The channel value will be ADS.PX (P0-P3)
 
     def get_signal_converter(self):
         return self.signal_converter
