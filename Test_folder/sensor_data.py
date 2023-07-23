@@ -3,7 +3,7 @@ import json
 import Adafruit_DHT
 from datetime import datetime
 
-from myDHT22 import DHT
+from Program_files.Sensors.myDHT22 import DHT
 
 # Using the Python Device SDK for IoT Hub:
 #   https://github.com/Azure/azure-iot-sdk-python
