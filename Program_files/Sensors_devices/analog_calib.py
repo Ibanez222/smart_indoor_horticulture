@@ -22,6 +22,9 @@ class analogue_ada_sensor(object):
             raise ValueError("Invalid pin. Please input a valid pin number (0, 1, 2, or 3).")
         self.channel = AnalogIn(self.digital_converter, self.pins[pin])  # The channel value will be ADS.PX (P0-P3)
 
+    def get_data_type(self):
+        return self.type_of_data
+
     def get_signal_converter(self):
         return self.signal_converter
 
@@ -33,6 +36,9 @@ class analogue_ada_sensor(object):
 
     def get_raw_value(self):
         return self.channel.value  # Returns the raw ADC value
+
+    def get_mapped_value(self, min_value, max_value):
+        return ((self.get_raw_value() - min_value)*100)/(max_value-min_value) + 0
 
     def __str__(self):
         return f"Analog Sensor (Type: {self.type_of_data}, Pin: {self.channel.name}, Voltage: {self.get_voltage():.2f}V)"
