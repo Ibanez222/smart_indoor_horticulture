@@ -14,6 +14,6 @@ Sensor3 = analogue_ada_sensor("Soil Moisture", 3)
 
 while True:
     print("Sensor1 value: " + str(Sensor1.get_raw_value()))
-    print("Sensor2 value: " + str(Sensor1.get_raw_value()))
-    print("Sensor3 value: " + str(Sensor1.get_raw_value()))
+    print("Sensor2 value: " + str(Sensor2.get_raw_value()))
+    print("Sensor3 value: " + str(Sensor3.get_raw_value()))
     time.sleep(3)
