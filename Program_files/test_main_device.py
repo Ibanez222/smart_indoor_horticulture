@@ -14,7 +14,10 @@ Sensor3 = analogue_ada_sensor("Soil Moisture", 3)
 
 #time 1 minute
 
-print(f"Sensor1: {get_control_value(Sensor1, 60)}/tSensor2: {get_control_value(Sensor1, 60)}/tSensor3: {get_control_value(Sensor1, 60)}")
+print(f"Sensor1: {get_control_value(Sensor1, 60)}")
+      
+print(f"Sensor2: {get_control_value(Sensor2, 60)}")
+print(f"Sensor3: {get_control_value(Sensor3, 60)}")
 
 
 ##getting dry soil values
