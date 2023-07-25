@@ -32,7 +32,9 @@ class plant_monitor(object):
     def get_light_value(self, min_measured, max_measured):
         light_percentage = self.light_sensor.get_mapped_value(min_measured, max_measured)
         return str(light_percentage) + "%" 
-        
+    
+    def get_plants_list(self):
+        return self.plants
     #####End of Getters#######
 
     def add_analog_sensor(self, data_type, ads_pin):
