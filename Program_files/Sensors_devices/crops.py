@@ -1,5 +1,5 @@
-from analog_calib import mapValue ## each plant for each raspberry pi contains a capacitive moisture sensor
-from analog_calib import analogue_ada_sensor
+from Sensors_devices.analog_calib import mapValue ## each plant for each raspberry pi contains a capacitive moisture sensor
+from Sensors_devices.analog_calib import analogue_ada_sensor
 
 class Plant(object):
     def __init__(self, name, species, temperature_requirement, humidity_requirement, light_requirement, soil_moist_pin):

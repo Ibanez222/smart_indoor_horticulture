@@ -1,8 +1,8 @@
-from myDHT22 import DHT
-from analog_calib import analogue_ada_sensor
-from analog_calib import mapValue
+from Sensors_devices.myDHT22 import DHT
+from Sensors_devices.analog_calib import analogue_ada_sensor
+from Sensors_devices.analog_calib import mapValue
 import json
-from crops import Plant
+from Sensors_devices.crops import Plant
 
 ##I am assuming that each device has its own DHT sensor
 
