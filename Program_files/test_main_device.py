@@ -1,6 +1,6 @@
 #from Sensors_devices.plant_monitor import plant_monitor
 from Sensors_devices.analog_calib import analogue_ada_sensor
-import Sensors_devices.analog_calib
+from Sensors_devices.analog_calib import get_control_value
 import time
 import json
 
@@ -12,8 +12,15 @@ Sensor1 = analogue_ada_sensor("Soil Moisture", 1)
 Sensor2 = analogue_ada_sensor("Soil Moisture", 2)
 Sensor3 = analogue_ada_sensor("Soil Moisture", 3)
 
+#time 1 minute
+
+print(f"Sensor1: {get_control_value(Sensor1, 60)}/tSensor2: {get_control_value(Sensor1, 60)}/tSensor3: {get_control_value(Sensor1, 60)}")
+
+
+##getting dry soil values
+
+'''
 while True:
-    print("Sensor1 value: " + str(Sensor1.get_raw_value()))
-    print("Sensor2 value: " + str(Sensor2.get_raw_value()))
-    #print("Sensor3 value: " + str(Sensor3.get_raw_value()))
+    print("Sensor1 value: " + str(Sensor1.get_raw_value()) + "\tSensor2 value: " + str(Sensor2.get_raw_value())")
     time.sleep(0.5)
+'''
