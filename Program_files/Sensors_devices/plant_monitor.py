@@ -37,7 +37,7 @@ class plant_monitor(object):
         
         if(self.light_sensor.get_raw_value() <= self.min_light_value):
             light_percentage = 0
-        elif(self.light_sensor.get_raw_value() >= self.min_light_value):
+        elif(self.light_sensor.get_raw_value() >= self.max_light_value):
             light_percentage = 100
         else:
             light_percentage = self.light_sensor.get_mapped_value(self.min_light_value, self.max_light_value)
