@@ -1,13 +1,24 @@
 from Sensors_devices.analog_calib import analogue_ada_sensor
 from Sensors_devices.analog_calib import get_control_value, mapValue
 import time
+import csv
+
 
 light_sensor = analogue_ada_sensor("Light intensity", 0)
 
-readings = get_control_value(light_sensor, 10)
+#readings = get_control_value(light_sensor, 10)
 
 print("The reading is: " + str(readings))
+count = 0
 
+with open('light_exposure_max.csv', newline = '') as csvfile:
+    write_values = csv.writer(csvfile, delimiter=csv.QUOTE_MINIMAL)
+
+    write_values.writerow(['Max Readings'] + ['Time'])
+    while count < 20:
+        write_values.writerow[[light_sensor.get_raw_value()] + [count]]    
+        time.sleep(1)
+        count += 1
 '''
 max_value = 23344
 min_value = 6816
