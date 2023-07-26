@@ -35,7 +35,7 @@ class Plant(object):
     
     ##This method will calibrate the raw soil moisture data
     def get_soil_moisture(self):
-        return self.cap_soil_moist_sensor.get_mapped_value(self.min_soil_cal, self.max_soil_cal)
+        return 100 - self.cap_soil_moist_sensor.get_mapped_value(self.min_soil_cal, self.max_soil_cal)
     
     def get_soil_data_type(self):
         return self.cap_soil_moist_sensor.get_data_type()
