@@ -36,25 +36,25 @@ class plant_monitor(object):
     def get_plants_list(self):
         return self.plants
     #####End of Getters#######
-
+    '''
     def add_analog_sensor(self, data_type, ads_pin):
         ada_sensor = analogue_ada_sensor(data_type, ads_pin)
         self.analog_sensors.append(ada_sensor)
-    
+    '''
     def add_plant(self, name, species, temperature_requirement, humidity_requirement, light_requirement, sensor_pin):
         p = Plant(name, species, temperature_requirement, humidity_requirement, light_requirement, sensor_pin)
         self.plants.append(p)
 
     ## the minimum soil moisture value and max_soil_moisture values will be constant throughout.
     ## The user will have to calibrate their analogue sensors first.
-    def get_results(self, min_soil_moisture, max_soil_moisture):
+    def get_results(self):
         results = {}
 
         for p in self.plants:
             results[p] = {
                 "Temperature" : "{:1.1f}".format(self.get_temperature()), 
                 "Humidity": "{:1.1f}".format(self.get_humidity()),
-                p.get_soil_data_type(): p.get_soil_moisture(min_soil_moisture, max_soil_moisture),
+                p.get_soil_data_type(): p.get_soil_moisture(),
                 self.light_sensor.get_data_type(): str(self.get_light_value()) + "%"
                 }
         return results
