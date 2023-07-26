@@ -62,7 +62,7 @@ class plant_monitor(object):
         results = {}
 
         for p in self.plants:
-            results[p] = {
+            results[p.get_plant_name()] = {
                 "Temperature" : "{:1.1f}".format(self.get_temperature()), 
                 "Humidity": "{:1.1f}".format(self.get_humidity()),
                 p.get_soil_data_type(): p.get_soil_moisture(),

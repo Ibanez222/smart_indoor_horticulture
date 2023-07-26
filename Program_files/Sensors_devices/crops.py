@@ -11,7 +11,10 @@ class Plant(object):
         self.cap_soil_moist_sensor = analogue_ada_sensor("Soil Moisture", soil_moist_pin)
         self.min_soil_cal = min_soil_cal
         self.max_soil_cal = max_soil_cal
-        
+    
+    def get_plant_name(self):
+        return self.name
+    
     def set_temp_variable(self, temperature_requirement):
         self.temperature_requirement = temperature_requirement
 
