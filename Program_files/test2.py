@@ -11,8 +11,8 @@ light_sensor = analogue_ada_sensor("Light intensity", 0)
 print("The reading is: " + str(readings))
 count = 0
 
-with open('light_exposure_max.csv', newline = '') as csvfile:
-    write_values = csv.writer(csvfile, delimiter=csv.QUOTE_MINIMAL)
+with open('light_exposure_max.csv', 'w', newline = '') as file:
+    write_values = csv.writer(file)
 
     write_values.writerow(['Max Readings'] + ['Time'])
     while count < 20:
