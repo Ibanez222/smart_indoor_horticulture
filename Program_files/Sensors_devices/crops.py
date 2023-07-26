@@ -2,15 +2,17 @@ from Sensors_devices.analog_calib import mapValue ## each plant for each raspber
 from Sensors_devices.analog_calib import analogue_ada_sensor
 
 class Plant(object):
-    def __init__(self, name, species, temperature_requirement, humidity_requirement, light_requirement, soil_moist_pin, min_soil_cal, max_soil_cal):
+    def __init__(self, name, species, min_temp_requirement, min_hum_requirement, min_light_requirement, soil_moist_pin, min_soil_cal, max_soil_cal):
         self.name = name
         self.species = species
-        self.temperature_requirement = temperature_requirement
-        self.humidity_requirement = humidity_requirement
-        self.light_requirement = light_requirement
+        self.min_temp_requirement = min_temp_requirement
+        self.min_hum_requirement = min_hum_requirement
+        self.min_light_requirement = min_light_requirement
         self.cap_soil_moist_sensor = analogue_ada_sensor("Soil Moisture", soil_moist_pin)
         self.min_soil_cal = min_soil_cal
         self.max_soil_cal = max_soil_cal
+    
+    #######Getters Setters##################
     
     def get_plant_name(self):
         return self.name

@@ -55,7 +55,77 @@ class plant_monitor(object):
     def add_plant(self, name, species, temperature_requirement, humidity_requirement, light_requirement, sensor_pin, wet_value, dryvalue):
         p = Plant(name, species, temperature_requirement, humidity_requirement, light_requirement, sensor_pin, wet_value, dryvalue)
         self.plants.append(p)
+    
+    ####Checks in the code#######
+    def temp_check(self, veg): ##Plant classes only
+        responses = ["Too Cold", "Colder Temperature", "Optimal Temperature", "Warmer Growing Temperature", "Too Hot"]
+        temp_requirement = veg.get_temp_variable()
+        tolerance = 5  # Tolerance for checking temperature ranges. Assuming 5C is the range for each categories 
+    
+        # Define temperature ranges based on the temperature requirement
+        min_temp = temp_requirement - tolerance
+        max_temp = temp_requirement + tolerance
+        warmer_temp = temp_requirement + 5 + tolerance
 
+        temp_reading = self.get_temperature()
+
+        if temp_reading > warmer_temp:
+            return responses[4]
+        elif temp_reading >= max_temp:
+            return responses[3]
+        elif temp_reading <= min_temp:
+            return responses[1]
+        elif min_temp < temp_reading < max_temp:
+            return responses[2]
+        else:
+            return "Unknown"
+    
+    
+    def hum_check(self, veg):
+        responses = ["Low Humidity", "Optimum Humidity Met", "Hgh Humidity"]
+        hum_requirement = veg.get_hum_variable()
+        hum_reading = self.get_humidity()
+        tolerance = 25
+        
+        max_humidity = hum_requirement
+        min_humidity = hum_requirement - tolerance
+        
+        if hum_reading > max_humidity:
+            return responses[2]
+        elif hum_reading >= min_humidity:
+            return responses[1]
+        else:
+            return responses[0]
+    
+    def soil_moisture_check(self, veg):
+        responses = ["Too much water", "No Watering needed", "Needs More Water"]
+        soil_moisture_reading = veg.get_soil_moisture()
+        
+        if soil_moisture_reading > 60:
+            return responses[0]
+        elif soil_moisture_reading > 20:
+            return responses[1]
+        else:
+            return responses[2]
+        
+    def check_light(self, veg):
+        
+        light_reading = self.get_light_value()
+        
+        if light_reading > 85:
+            return "Direct Sun"
+        elif light_reading > 70:
+            return "Slightly Cloudy"
+        elif light_reading > 40:
+            return "Cloudy"
+        elif light_reading > 0:
+            return "Rain"
+        else:
+            return "Night Time"
+        
+        
+        
+    
     ## the minimum soil moisture value and max_soil_moisture values will be constant throughout.
     ## The user will have to calibrate their analogue sensors first.
     def get_results(self):
@@ -66,7 +136,11 @@ class plant_monitor(object):
                 "Temperature" : "{:1.1f}".format(self.get_temperature()), 
                 "Humidity": "{:1.1f}".format(self.get_humidity()),
                 p.get_soil_data_type(): p.get_soil_moisture(),
-                self.light_sensor.get_data_type(): str(self.get_light_value()) + "%"
+                self.light_sensor.get_data_type(): str(self.get_light_value()) + "%",
+                "Temperature Check": self.temp_check(p),
+                "Humidity Check": self.hum_check(p),
+                "Sun Exposure Check": self.check_light(p),
+                "Soil Moisture Check": self.soil_moisture_check(p)
                 }
         return results
     
