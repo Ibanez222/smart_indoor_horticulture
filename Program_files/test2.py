@@ -8,7 +8,7 @@ light_sensor = analogue_ada_sensor("Light intensity", 0)
 
 #readings = get_control_value(light_sensor, 10)
 
-print("The reading is: " + str(readings))
+#print("The reading is: " + str(readings))
 count = 0
 
 with open('light_exposure_max.csv', newline = '') as csvfile:
