@@ -14,4 +14,5 @@ min_value = 6816
 
 while True:
     print(str(light_sensor.get_mapped_value(min_value, max_value)) + "%")
+    print("Reading: " + str(light_sensor.get_raw_value()))
     time.sleep(1)
