@@ -17,23 +17,23 @@ class Plant(object):
     def get_plant_name(self):
         return self.name
     
-    def set_temp_variable(self, temperature_requirement):
-        self.temperature_requirement = temperature_requirement
+    def set_temp_variable(self, min_temp_requirement):
+        self.min_temp_requirement = min_temp_requirement
 
     def get_temp_variable(self):
-        return self.temperature_requirement
+        return self.min_temp_requirement
     
-    def set_hum_variable(self, humidity_requirement):
-        self.humidity_requirement = humidity_requirement
+    def set_hum_variable(self, min_hum_requirement):
+        self.min_hum_requirement = min_hum_requirement
 
     def get_hum_variable(self):
-        return self.humidity_requirement
+        return self.min_hum_requirement
     
-    def set_light_variable(self, light_requirement):
-        self.light_requirement = light_requirement
+    def set_light_variable(self, min_light_requirement):
+        self.min_light_requirement = min_light_requirement
 
     def get_light_variable(self):
-        return self.light_requirement
+        return self.min_light_requirement
     
     ##This method will calibrate the raw soil moisture data
     def get_soil_moisture(self):
