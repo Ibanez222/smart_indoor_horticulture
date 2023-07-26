@@ -42,7 +42,7 @@ class plant_monitor(object):
         else:
             light_percentage = self.light_sensor.get_mapped_value(self.min_light_value, self.max_light_value)
 
-        return str(light_percentage) + "%" 
+        return light_percentage 
     
     def get_plants_list(self):
         return self.plants
