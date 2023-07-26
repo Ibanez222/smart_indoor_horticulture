@@ -3,6 +3,7 @@ from Sensors_devices.analog_calib import analogue_ada_sensor
 from Sensors_devices.analog_calib import get_control_value
 import time
 import json
+import csv
 
 #new_device = plant_monitor("Raspberry Pi", "Some Random Id", 4, "DHT22", 0)
 
@@ -12,12 +13,18 @@ Sensor1 = analogue_ada_sensor("Soil Moisture", 1)
 Sensor2 = analogue_ada_sensor("Soil Moisture", 2)
 Sensor3 = analogue_ada_sensor("Soil Moisture", 3)
 
-#time 1 minute
+count = 0
 
-print(f"Sensor1: {get_control_value(Sensor1, 60)}")
-      
-print(f"Sensor2: {get_control_value(Sensor2, 60)}")
-print(f"Sensor3: {get_control_value(Sensor3, 60)}")
+with open('Soil_moisture_s1.csv') as file:
+    write_soil = csv.writer(file)
+
+    write_soil.writerow(["Dry Reading"] + "Time(s)")
+    while count < 20:
+        write_soil.writerow([str(Sensor1.get_raw_value())] + [str(count)])
+        time.sleep(1)
+        count += 1
+
+#while count < 60:
 
 
 ##getting dry soil values
