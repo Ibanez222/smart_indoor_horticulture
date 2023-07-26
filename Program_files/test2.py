@@ -16,7 +16,7 @@ with open('light_exposure_max.csv', 'w', newline = '') as file:
 
     write_values.writerow(['Max Readings'] + ['Time'])
     while count < 20:
-        write_values.writerow[[light_sensor.get_raw_value()] + [count]]    
+        write_values.writerow([str(light_sensor.get_raw_value())] + [str(count)])    
         time.sleep(1)
         count += 1
 '''
