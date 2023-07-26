@@ -8,6 +8,9 @@ from Sensors_devices.crops import Plant
 
 class plant_monitor(object):
 
+    min_light_value = 6816
+    max_light_value = 23344
+    
     def __init__(self, name, device_id, dht_pin, dht_model, light_sensor_pin):
         self.name = name
         self.device_id = device_id
@@ -29,8 +32,16 @@ class plant_monitor(object):
     def get_humidity(self):
         return self.dht_sensor.get_humidity()
     
-    def get_light_value(self, min_measured, max_measured):
-        light_percentage = self.light_sensor.get_mapped_value(min_measured, max_measured)
+    def get_light_value(self):
+        light_percentage = None
+        
+        if(self.light_sensor.get_raw_value() <= self.min_light_value):
+            light_percentage = 0
+        elif(self.light_sensor.get_raw_value() >= self.min_light_value):
+            light_percentage = 100
+        else:
+            light_percentage = self.light_sensor.get_mapped_value(self.min_light_value, self.max_light_value)
+
         return str(light_percentage) + "%" 
     
     def get_plants_list(self):
