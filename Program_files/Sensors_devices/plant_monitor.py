@@ -41,8 +41,8 @@ class plant_monitor(object):
         ada_sensor = analogue_ada_sensor(data_type, ads_pin)
         self.analog_sensors.append(ada_sensor)
     '''
-    def add_plant(self, name, species, temperature_requirement, humidity_requirement, light_requirement, sensor_pin):
-        p = Plant(name, species, temperature_requirement, humidity_requirement, light_requirement, sensor_pin)
+    def add_plant(self, name, species, temperature_requirement, humidity_requirement, light_requirement, sensor_pin, wet_value, dryvalue):
+        p = Plant(name, species, temperature_requirement, humidity_requirement, light_requirement, sensor_pin, wet_value, dryvalue)
         self.plants.append(p)
 
     ## the minimum soil moisture value and max_soil_moisture values will be constant throughout.
