@@ -14,7 +14,7 @@ raspberry_pi.add_plant("Lettuce2", "Lettuce", 18.0, 75.0, 70, 2, 6192, 13648)
 raspberry_pi.add_plant("Lettuce3", "Lettuce", 18.0, 75.0, 70, 3, 7904, 14048)
 
 def iothub_client_init():
-    client = IoTHubDeviceClient.create_from_connection_string(raspberry_pi.get_device_id)
+    client = IoTHubDeviceClient.create_from_connection_string(raspberry_pi.get_device_id())
     return client
 
 def iothub_client_telemetry_sample_run():
@@ -27,7 +27,7 @@ def iothub_client_telemetry_sample_run():
 #            humidity, temperature = sensor_device.get_results()
             temperature = raspberry_pi.get_temperature()
 
-            message = Message(raspberry_pi.get_results())
+            message = Message(json.dumps(raspberry_pi.get_results(), indent=2))
 
             # Add a custom application property to the message.
             # An IoT hub can filter on these properties without access to the message body.
