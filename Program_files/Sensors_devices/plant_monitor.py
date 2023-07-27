@@ -101,9 +101,9 @@ class plant_monitor(object):
         responses = ["Too much water", "No Watering needed", "Needs More Water"]
         soil_moisture_reading = veg.get_soil_moisture()
         
-        if soil_moisture_reading > 60:
+        if soil_moisture_reading > 90:
             return responses[0]
-        elif soil_moisture_reading > 20:
+        elif soil_moisture_reading > 50:
             return responses[1]
         else:
             return responses[2]
