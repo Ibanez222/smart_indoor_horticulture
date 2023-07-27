@@ -15,13 +15,14 @@ Sensor3 = analogue_ada_sensor("Soil Moisture", 3)
 
 count = 0
 
-with open('wet_value_soil_moisture_s3_t2.csv', 'w', newline='') as file:
+with open('Dry_Value.csv', 'w', newline='') as file:
 	write_soil = csv.writer(file)
-	write_soil.writerow(["Wet Reading"] + ["Time(s)"])
+	write_soil.writerow(["Dry Reading"] + ["Control Material: Sand"])
+	write_soil.writerow(["Time"] + ["Sensor1"] + ["Sensor2"] + ["Sensor3"])
 	
 	while count < 60:
-		print("Reading s3: " + str(Sensor3.get_raw_value()))
-		write_soil.writerow([str(Sensor3.get_raw_value())] + [str(count)])
+		print("Reading s1: " + str(Sensor1.get_raw_value()) + ", Reading s2: " + str(Sensor2.get_raw_value()) + ", Reading s3: " + str(Sensor3.get_raw_value()))
+		write_soil.writerow([str(count + 1)] + [str(Sensor1.get_raw_value())] + [str(Sensor1.get_raw_value())] + [str(Sensor3.get_raw_value())])
 		time.sleep(1)
 		count += 1
 
