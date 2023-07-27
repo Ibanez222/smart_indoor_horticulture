@@ -2,6 +2,7 @@ from Sensors_devices.plant_monitor import plant_monitor
 from Sensors_devices.crops import Plant
 
 import time
+import json
 
 dry_sensor1_reading = 15968
 wet_sensor1_reading = 8432
@@ -17,5 +18,5 @@ raspberry_pi.add_plant("Lettuce3", "Lettuce", 18.0, 75.0, 70, 3, wet_sensor3_rea
 
 
 while True:
-    print(raspberry_pi.get_results())
+    print(json.dumps(raspberry_pi.get_results(), indent = 2))
     time.sleep(3)
