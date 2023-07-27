@@ -65,7 +65,7 @@ def iothub_client_telemetry_sample_run():
             print( "Sending message: {}".format(message) )
             client.send_message(message)
             print ( "Message successfully sent" )
-            time.sleep(3)
+            time.sleep(60)
 
     except KeyboardInterrupt:
         print ( "IoTHubClient sample stopped" )
