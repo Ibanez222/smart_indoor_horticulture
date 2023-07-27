@@ -17,7 +17,7 @@ def iothub_client_init():
     client = IoTHubDeviceClient.create_from_connection_string(raspberry_pi.get_device_id)
     return client
 
-def iot_client_telemetry_sample_run():
+def iothub_client_telemetry_sample_run():
     
     try:
         client = iothub_client_init()
