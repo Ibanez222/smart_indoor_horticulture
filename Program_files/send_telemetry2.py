@@ -7,11 +7,17 @@ from azure.iot.device import IoTHubDeviceClient, Message
 
 CONNECTION_STRING = "HostName=IOTGarden.azure-devices.net;DeviceId=raspberryPi;SharedAccessKey=46CRN2+Bvvozcjil3POL7vJdh/tjy4ZnRth1oyG4utg="
 
+dry_sensor1_reading = 15968
+wet_sensor1_reading = 8432
+dry_sensor2_reading = 15636
+wet_sensor2_reading = 8416
+dry_sensor3_reading = 17536
+wet_sensor3_reading = 12776
 
 raspberry_pi = plant_monitor("RaspberryPi", CONNECTION_STRING, 4, "DHT22", 0)
-raspberry_pi.add_plant("Lettuce1", "Lettuce", 18.0, 75.0, 70, 1, 4672, 11568)
-raspberry_pi.add_plant("Lettuce2", "Lettuce", 18.0, 75.0, 70, 2, 6192, 13648)
-raspberry_pi.add_plant("Lettuce3", "Lettuce", 18.0, 75.0, 70, 3, 7904, 14048)
+raspberry_pi.add_plant("Lettuce1", "Lettuce", 18.0, 75.0, 70, 1, wet_sensor1_reading, dry_sensor1_reading)
+raspberry_pi.add_plant("Lettuce2", "Lettuce", 18.0, 75.0, 70, 2, wet_sensor3_reading, dry_sensor2_reading)
+raspberry_pi.add_plant("Lettuce3", "Lettuce", 18.0, 75.0, 70, 3, wet_sensor3_reading, dry_sensor3_reading)
 
 def iothub_client_init():
     client = IoTHubDeviceClient.create_from_connection_string(raspberry_pi.get_device_id())
