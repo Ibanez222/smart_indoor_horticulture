@@ -3,9 +3,9 @@ import json
 from datetime import datetime
 
 from Sensors_devices.plant_monitor import plant_monitor
-from azure.iot_device import IoTHubDeviceClient, Message
+from azure.iot.device import IoTHubDeviceClient, Message
 
-CONNECTION_STRING = "Change Me"
+CONNECTION_STRING = "HostName=IOTGarden.azure-devices.net;DeviceId=raspberryPi;SharedAccessKey=46CRN2+Bvvozcjil3POL7vJdh/tjy4ZnRth1oyG4utg="
 
 
 raspberry_pi = plant_monitor("RaspberryPi", CONNECTION_STRING, 4, "DHT22", 0)
