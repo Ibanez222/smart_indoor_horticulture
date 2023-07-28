@@ -5,7 +5,8 @@ from datetime import datetime
 from Sensors_devices.plant_monitor import plant_monitor
 from azure.iot.device import IoTHubDeviceClient, Message
 
-CONNECTION_STRING = "HostName=IOTGarden.azure-devices.net;DeviceId=raspberryPi;SharedAccessKey=46CRN2+Bvvozcjil3POL7vJdh/tjy4ZnRth1oyG4utg="
+#CONNECTION_STRING = "HostName=IOTGarden.azure-devices.net;DeviceId=raspberryPi;SharedAccessKey=46CRN2+Bvvozcjil3POL7vJdh/tjy4ZnRth1oyG4utg="
+CONNECTION_STRING = "HostName=RaspberryPiBackUp.azure-devices.net;DeviceId=planterpi;SharedAccessKey=leJP9WLH6XIDnQts+GsWKY3QMWY7iNDtY34Inu1H6JU="
 
 dry_sensor1_reading = 15968
 wet_sensor1_reading = 8432
