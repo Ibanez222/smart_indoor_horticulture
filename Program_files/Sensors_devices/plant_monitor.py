@@ -135,7 +135,9 @@ class plant_monitor(object):
             temp_reading = "{:1.1f}".format(self.get_temperature())
             humidity = "{:1.1f}".format(self.get_humidity())
             light_reading = str(self.get_light_value())
-            results[p.get_plant_name()] = {
+            results = {
+                "Plant Name" : p.get_plant_name(),
+                "Device Name": self.get_device_name,
                 "Temperature" : temp_reading, 
                 "Humidity": humidity,
                 p.get_soil_data_type(): p.get_soil_moisture(),
@@ -145,7 +147,10 @@ class plant_monitor(object):
                 "Sun Exposure Check": self.check_light(p),
                 "Soil Moisture Check": self.soil_moisture_check(p)
                 }
-        return {self.get_device_name():results}
+            
+            
+
+        return results
     
     ###format of the results
     ##{Plant Name: {Temperature:temp, Humidity: humid, light_exposure}}
