@@ -137,7 +137,7 @@ class plant_monitor(object):
             light_reading = str(self.get_light_value())
             all_results = {
                 "Plant Name" : p.get_plant_name(),
-                "Device Name": self.get_device_name,
+                "Device Name": self.get_device_name(),
                 "Temperature" : temp_reading, 
                 "Humidity": humidity,
                 p.get_soil_data_type(): p.get_soil_moisture(),
