@@ -18,5 +18,5 @@ raspberry_pi.add_plant("Lettuce3", "Lettuce", 18.0, 75.0, 70, 3, wet_sensor3_rea
 
 
 while True:
-    print(json.dumps(raspberry_pi.get_results(), indent = 2))
+    print(json.dumps(str(raspberry_pi.get_results()), indent = None))
     time.sleep(3)
