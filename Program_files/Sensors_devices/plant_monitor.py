@@ -129,13 +129,13 @@ class plant_monitor(object):
     ## the minimum soil moisture value and max_soil_moisture values will be constant throughout.
     ## The user will have to calibrate their analogue sensors first.
     def get_results(self):
-        results = {}
+        results = []
 
         for p in self.plants:
             temp_reading = "{:1.1f}".format(self.get_temperature())
             humidity = "{:1.1f}".format(self.get_humidity())
             light_reading = str(self.get_light_value())
-            results = {
+            all_results = {
                 "Plant Name" : p.get_plant_name(),
                 "Device Name": self.get_device_name,
                 "Temperature" : temp_reading, 
@@ -148,7 +148,7 @@ class plant_monitor(object):
                 "Soil Moisture Check": self.soil_moisture_check(p)
                 }
             
-            
+            results.append(all_results)
 
         return results
     
