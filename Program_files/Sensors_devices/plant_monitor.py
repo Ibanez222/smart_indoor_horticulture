@@ -145,7 +145,7 @@ class plant_monitor(object):
                 "Sun Exposure Check": self.check_light(p),
                 "Soil Moisture Check": self.soil_moisture_check(p)
                 }
-        return results
+        return {self.get_device_name():results}
     
     ###format of the results
     ##{Plant Name: {Temperature:temp, Humidity: humid, light_exposure}}
