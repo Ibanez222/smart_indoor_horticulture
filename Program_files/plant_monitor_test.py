@@ -13,7 +13,7 @@ wet_sensor3_reading = 12776
 
 raspberry_pi = plant_monitor("RaspberryPi", "", 4, "DHT22", 0)
 raspberry_pi.add_plant("Lettuce1", "Lettuce", 18.0, 75.0, 70, 1, wet_sensor1_reading, dry_sensor1_reading)
-raspberry_pi.add_plant("Lettuce2", "Lettuce", 18.0, 75.0, 70, 2, wet_sensor3_reading, dry_sensor2_reading)
+raspberry_pi.add_plant("Lettuce2", "Lettuce", 18.0, 75.0, 70, 2, wet_sensor2_reading, dry_sensor2_reading)
 raspberry_pi.add_plant("Lettuce3", "Lettuce", 18.0, 75.0, 70, 3, wet_sensor3_reading, dry_sensor3_reading)
 
 
