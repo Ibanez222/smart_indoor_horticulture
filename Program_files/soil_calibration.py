@@ -18,11 +18,11 @@ count = 0
 with open('Normal_readings.csv', 'w', newline='') as file:
 	write_soil = csv.writer(file)
 	write_soil.writerow(["Normal Reading"] + ["Control Material: Soil/Compost"])
-	write_soil.writerow(["Time"] + ["Sensor1"] + ["Sensor2"] + ["Sensor3"])
+	write_soil.writerow(["Time"] + ["Sensor1"] + ["Sensor2"] + ["Sensor3"] + ["Voltage"])
 	
 	while count < 60:
 		print("Reading s1: " + str(Sensor1.get_raw_value()) + ", Reading s2: " + str(Sensor2.get_raw_value()) + ", Reading s3: " + str(Sensor3.get_raw_value()))
-		write_soil.writerow([str(count + 1)] + [str(Sensor1.get_raw_value())] + [str(Sensor1.get_raw_value())] + [str(Sensor3.get_raw_value())])
+		write_soil.writerow([str(count + 1)] + [str(Sensor1.get_raw_value())] + [str(Sensor1.get_voltage())] + [str(Sensor2.get_raw_value())] + [str(Sensor2.get_voltage())] + [str(Sensor3.get_raw_value())] + [str(Sensor3.get_voltage())])
 		time.sleep(1)
 		count += 1
 
