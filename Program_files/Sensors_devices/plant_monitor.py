@@ -132,9 +132,9 @@ class plant_monitor(object):
         results = {}
 
         for p in self.plants:
-            temp_reading = "{:1.1f}".format(self.get_temperature())
-            humidity = "{:1.1f}".format(self.get_humidity())
-            light_reading = str(self.get_light_value())
+            temp_reading = self.get_temperature()
+            humidity = self.get_humidity()
+            light_reading = self.get_light_value()
             results[p.get_plant_name()] = {
                 "Temperature" : temp_reading, 
                 "Humidity": humidity,
