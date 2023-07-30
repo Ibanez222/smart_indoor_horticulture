@@ -6,6 +6,7 @@ from Sensors_devices.plant_monitor import plant_monitor
 from azure.iot.device import IoTHubDeviceClient, Message
 
 CONNECTION_STRING = "HostName=IOTGarden.azure-devices.net;DeviceId=raspberryPi;SharedAccessKey=46CRN2+Bvvozcjil3POL7vJdh/tjy4ZnRth1oyG4utg="
+#CONNECTION_STRING = "HostName=RaspberryPiBackUp.azure-devices.net;DeviceId=planterpi;SharedAccessKey=leJP9WLH6XIDnQts+GsWKY3QMWY7iNDtY34Inu1H6JU="
 
 dry_sensor1_reading = 15968
 wet_sensor1_reading = 8432
@@ -33,7 +34,7 @@ def iothub_client_telemetry_sample_run():
 #            humidity, temperature = sensor_device.get_results()
             temperature = raspberry_pi.get_temperature()
 
-            message = Message(json.dumps(raspberry_pi.get_results(), indent=2))
+            message = Message(json.dumps(str(raspberry_pi.get_results()), indent=2))
 
             # Add a custom application property to the message.
             # An IoT hub can filter on these properties without access to the message body.
