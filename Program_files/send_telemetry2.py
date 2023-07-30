@@ -34,7 +34,7 @@ def iothub_client_telemetry_sample_run():
 #            humidity, temperature = sensor_device.get_results()
             temperature = raspberry_pi.get_temperature()
 
-            message = Message(json.dumps(str(raspberry_pi.get_results()), indent=2))
+            message = Message(json.dumps(raspberry_pi.get_results(), indent=2))
 
             # Add a custom application property to the message.
             # An IoT hub can filter on these properties without access to the message body.
