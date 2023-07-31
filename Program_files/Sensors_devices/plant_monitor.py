@@ -128,11 +128,30 @@ class plant_monitor(object):
     ## The user will have to calibrate their analogue sensors first.
     def get_results(self):
         results = []
-
+        soil_results = {}
+      
+        all_results = {
+            "Temperature" : self.get_temperature(),
+            "Humidity" : self.get_humidity(),
+            "Light_reading" : self.get_light_value()
+        }
+        
+        for i in range(len(self.plants)):
+            soil_results["Soil moisture " + str(i)] = self.plants[i].get_soil_moisture()
+            soil_results["Humidity Check Plant " + str(i)] = self.hum_check(self.plants[i])
+            soil_results["Temperature Check Plant " + str(i)] = self.temp_check(self.plants[i])
+            soil_results["Check Light Plant " + str(i)] = self.check_light(self.plants[i])
+            soil_results["Check Soil Moisture Plant " + str(i)] = self.hum_check(self.plants[i])
+            
+            
+            
+        
+        all_results.update(soil_results)
+        
+        
+        '''
         for p in self.plants:
-            temp_reading = self.get_temperature()
-            humidity = self.get_humidity()
-            light_reading = self.get_light_value()
+            
             all_results = {
                 "Plant Name" : p.get_plant_name(),
                 "Device Name": self.get_device_name(),
@@ -145,8 +164,8 @@ class plant_monitor(object):
                 "Sun Exposure Check": self.check_light(p),
                 "Soil Moisture Check": self.soil_moisture_check(p)
                 }
-            
-            results.append(all_results)
+            '''
+        results.append(all_results)
 
         return results
     
