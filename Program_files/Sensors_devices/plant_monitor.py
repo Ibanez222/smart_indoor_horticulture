@@ -110,11 +110,11 @@ class plant_monitor(object):
         
         light_reading = self.get_light_value()
         
-        if light_reading > 85:
+        if light_reading > 90:
             return "Direct Sun"
-        elif light_reading > 70:
+        elif light_reading > 80:
             return "Slightly Cloudy"
-        elif light_reading > 40:
+        elif light_reading > 60:
             return "Cloudy"
         elif light_reading > 0:
             return "Rain"
