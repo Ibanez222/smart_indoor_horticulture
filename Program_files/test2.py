@@ -10,7 +10,7 @@ light_sensor = analogue_ada_sensor("Light intensity", 0)
 
 #print("The reading is: " + str(readings))
 count = 0
-
+'''
 with open('light_exposure_max.csv', 'w', newline = '') as file:
     write_values = csv.writer(file)
 
@@ -27,4 +27,3 @@ while True:
     print("{:1.1f}".format(light_sensor.get_mapped_value(min_value, max_value)) + "%")
     print("Reading: " + str(light_sensor.get_raw_value()))
     time.sleep(1)
-'''
