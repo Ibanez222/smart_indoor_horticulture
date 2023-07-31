@@ -37,7 +37,13 @@ class Plant(object):
     
     ##This method will calibrate the raw soil moisture data
     def get_soil_moisture(self):
-        return 100 - self.cap_soil_moist_sensor.get_mapped_value(self.min_soil_cal, self.max_soil_cal)
+        percentage = 100 - self.cap_soil_moist_sensor.get_mapped_value(self.min_soil_cal, self.max_soil_cal)
+        if percentage > 100:
+            return 100
+        elif percentage < 0:
+            return 0
+        else:
+            return percentage
     
     def get_soil_data_type(self):
         return self.cap_soil_moist_sensor.get_data_type()
