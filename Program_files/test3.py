@@ -30,5 +30,5 @@ with open('wet_value_soil_moisture_s3_t2.csv', 'w', newline='') as file:
 ##getting dry soil values
 
 while True:
-    print("Sensor1 value: " + str(Sensor1.get_raw_value()) + "\tSensor2 value: " + str(Sensor2.get_raw_value()))
+    print("Sensor1 value: " + str(Sensor1.get_raw_value()) + "\tSensor2 value: " + str(Sensor2.get_raw_value()) + "\tSensor3 value" + str(Sensor3.get_raw_value()))
     time.sleep(0.5)
