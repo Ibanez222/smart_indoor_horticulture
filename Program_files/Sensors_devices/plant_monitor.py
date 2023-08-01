@@ -134,7 +134,7 @@ class plant_monitor(object):
             "Temperature" : self.get_temperature(),
             "Humidity" : self.get_humidity(),
             "Light_reading" : self.get_light_value(),
-            "Device_ID" : self.get_device_name
+            "Device_ID" : self.get_device_name()
         }
         
         for i in range(len(self.plants)):
