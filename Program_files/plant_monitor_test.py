@@ -26,7 +26,7 @@ raspberry_pi.add_plant("Lettuce3", "Lettuce", 18.0, 75.0, 70, 3, wet_sensor3_rea
 
 
 while True:
-    #print(json.dumps(str(raspberry_pi.get_results()), indent = None))
+    print(json.dumps(str(raspberry_pi.get_results()), indent = None))
     #print("Plant 1: " + str(p1.get_soil_moisture()) + "\tPlant 2: " + str(p2.get_soil_moisture()) + "Plant 3: " + str(p3.get_soil_moisture()))
-    print(raspberry_pi.get_light_value())
+    #print(raspberry_pi.get_light_value())
     time.sleep(3)

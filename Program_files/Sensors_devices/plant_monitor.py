@@ -142,7 +142,7 @@ class plant_monitor(object):
             soil_results["Humidity Check Plant " + str(i)] = self.hum_check(self.plants[i])
             soil_results["Temperature Check Plant " + str(i)] = self.temp_check(self.plants[i])
             soil_results["Check Light Plant " + str(i)] = self.check_light(self.plants[i])
-            soil_results["Check Soil Moisture Plant " + str(i)] = self.hum_check(self.plants[i])
+            soil_results["Check Soil Moisture Plant " + str(i)] = self.soil_moisture_check(self.plants[i])
             
             
             
