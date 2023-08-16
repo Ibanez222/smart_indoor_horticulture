@@ -138,11 +138,11 @@ class plant_monitor(object):
         }
         
         for i in range(len(self.plants)):
-            soil_results["Soil moisture " + str(i)] = self.plants[i].get_soil_moisture()
-            soil_results["Humidity Check Plant " + str(i)] = self.hum_check(self.plants[i])
-            soil_results["Temperature Check Plant " + str(i)] = self.temp_check(self.plants[i])
-            soil_results["Check Light Plant " + str(i)] = self.check_light(self.plants[i])
-            soil_results["Check Soil Moisture Plant " + str(i)] = self.soil_moisture_check(self.plants[i])
+            soil_results["Soil moisture " + str(i+1)] = self.plants[i].get_soil_moisture()
+            soil_results["Humidity Check Plant " + str(i+1)] = self.hum_check(self.plants[i])
+            soil_results["Temperature Check Plant " + str(i+1)] = self.temp_check(self.plants[i])
+            soil_results["Check Light Plant " + str(i+1)] = self.check_light(self.plants[i])
+            soil_results["Check Soil Moisture Plant " + str(i+1)] = self.soil_moisture_check(self.plants[i])
             
             
             
