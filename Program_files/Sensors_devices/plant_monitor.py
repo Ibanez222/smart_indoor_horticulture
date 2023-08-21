@@ -46,17 +46,17 @@ class plant_monitor(object):
     
     def get_plants_list(self):
         return self.plants
-    #####End of Getters#######
-    '''
-    def add_analog_sensor(self, data_type, ads_pin):
-        ada_sensor = analogue_ada_sensor(data_type, ads_pin)
-        self.analog_sensors.append(ada_sensor)
-    '''
+    ##### End of Getters #######
+    
+    
+    ### Adding plants to the Device #############
     def add_plant(self, name, species, temperature_requirement, humidity_requirement, light_requirement, sensor_pin, wet_value, dryvalue):
         p = Plant(name, species, temperature_requirement, humidity_requirement, light_requirement, sensor_pin, wet_value, dryvalue)
         self.plants.append(p)
     
-    ####Checks in the code#######
+    
+    
+    ################ Start of Environmental Checks #######
     def temp_check(self, veg): ##Plant classes only
         responses = ["Too Cold", "Colder Temperature", "Optimal Temperature", "Warmer Growing Temperature", "Too Hot"]
         temp_requirement = veg.get_temp_variable()
@@ -121,7 +121,7 @@ class plant_monitor(object):
         else:
             return "Night Time"
         
-        
+    ############### End of Checks ######################
         
     
     ## the minimum soil moisture value and max_soil_moisture values will be constant throughout.
@@ -134,7 +134,7 @@ class plant_monitor(object):
             "Temperature" : self.get_temperature(),
             "Humidity" : self.get_humidity(),
             "Light_reading" : self.get_light_value(),
-            "Device_ID" : self.get_device_name()
+            "Device_ID" : self.get_device_name
         }
         
         for i in range(len(self.plants)):
@@ -142,30 +142,10 @@ class plant_monitor(object):
             soil_results["Humidity Check Plant " + str(i)] = self.hum_check(self.plants[i])
             soil_results["Temperature Check Plant " + str(i)] = self.temp_check(self.plants[i])
             soil_results["Check Light Plant " + str(i)] = self.check_light(self.plants[i])
-            soil_results["Check Soil Moisture Plant " + str(i)] = self.hum_check(self.plants[i])
-            
-            
-            
+            soil_results["Check Soil Moisture Plant " + str(i)] = self.hum_check(self.plants[i])        
         
         all_results.update(soil_results)
         
-        
-        '''
-        for p in self.plants:
-            
-            all_results = {
-                "Plant Name" : p.get_plant_name(),
-                "Device Name": self.get_device_name(),
-                "Temperature" : temp_reading, 
-                "Humidity": humidity,
-                p.get_soil_data_type(): p.get_soil_moisture(),
-                self.light_sensor.get_data_type():  light_reading,
-                "Temperature Check": self.temp_check(p),
-                "Humidity Check": self.hum_check(p),
-                "Sun Exposure Check": self.check_light(p),
-                "Soil Moisture Check": self.soil_moisture_check(p)
-                }
-            '''
         results.append(all_results)
 
         return results
