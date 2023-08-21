@@ -1,14 +1,12 @@
 import Adafruit_DHT
-import time
-import json
 from datetime import datetime
 
 
 
-class DHT(object):
+class DHT(object): 
     models = [Adafruit_DHT.DHT11, Adafruit_DHT.DHT22]
     
-    def __init__(self, pin, model):
+    def __init__(self, pin, model): ## The user must input a GPIO pin number(int) and a DHT model(string)
         self.pin = pin
         if model.lower() == "dht11":
             self.model = self.models[0]
@@ -17,17 +15,13 @@ class DHT(object):
         else:
             raise ValueError("Please type in a right DHT sensor model!")
     
-    def get_pin(self):
+    def get_pin(self): #This is the GPIO pin the DHT sensor is attached to
         return self.pin
     
     def get_model(self):
         return self.model
 
-    '''
     def get_results(self): #This method returns a tuple which contains the (humidity, temp) readings
-        return Adafruit_DHT.read_retry(self.model, self.pin)
-'''
-    def get_results(self):
          humidity, temperature = Adafruit_DHT.read_retry(self.model, self.pin)
          if humidity is not None and temperature is not None:
               return humidity, temperature
@@ -45,9 +39,9 @@ class DHT(object):
 
 
 
-sensor = DHT(4, "DHT22")
+#Testing the class
 '''
-sensor = DHT(4, Adafruit_DHT.DHT22)	
+sensor = DHT(4, "DHT22")	
 
 while True:
 	humidity, temperature = sensor.get_results()
